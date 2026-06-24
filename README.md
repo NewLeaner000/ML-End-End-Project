@@ -1,4 +1,4 @@
-# Advanced Hybrid RAG Pipeline (Local)
+# RAG_LLM_Pipeline
 
 An enterprise-grade Retrieval-Augmented Generation (RAG) pipeline built with LangChain, ChromaDB, and Ollama. This project demonstrates a complete end-to-end RAG architecture with Hybrid Search (Dense + Sparse) and Local LLM generation.
 
