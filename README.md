@@ -12,6 +12,20 @@ An enterprise-grade Retrieval-Augmented Generation (RAG) pipeline built with Lan
 
 ---
 
+## Tech Stack
+
+- **Orchestration**: [LangChain](https://python.langchain.com/)
+- **Vector Database**: [ChromaDB](https://www.trychroma.com/)
+- **LLM Engine**: [Ollama](https://ollama.com/) (Local Inference)
+- **Primary LLM**: Qwen 2.5 (1.5B/7B/14B) for both Generation and Query Auto-Correction
+- **Embedding Model**: HuggingFace `all-MiniLM-L6-v2`
+- **Cross-Encoder Reranker**: HuggingFace `ms-marco-MiniLM-L-6-v2`
+- **Sparse Retrieval**: BM25 (Rank-BM25)
+- **Frontend / UI**: [Streamlit](https://streamlit.io/)
+- **Language**: Python 3.10+
+
+---
+
 ## Architecture Diagram
 
 ```mermaid
