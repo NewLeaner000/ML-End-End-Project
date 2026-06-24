@@ -1,13 +1,12 @@
-# Advanced Hybrid RAG Pipeline (Local & Kaggle)
+# Advanced Hybrid RAG Pipeline (Local)
 
-An enterprise-grade Retrieval-Augmented Generation (RAG) pipeline built with LangChain, ChromaDB, and Ollama. This project demonstrates a complete end-to-end RAG architecture with Hybrid Search (Dense + Sparse), Local LLM generation, and automated evaluation using RAGAS.
+An enterprise-grade Retrieval-Augmented Generation (RAG) pipeline built with LangChain, ChromaDB, and Ollama. This project demonstrates a complete end-to-end RAG architecture with Hybrid Search (Dense + Sparse) and Local LLM generation.
 
 ## Key Features
 
 - **Local LLM Integration**: Fully private, local generation using [Ollama](https://ollama.com/) (Qwen2.5:1.5B/7B/14B).
 - **Hybrid Retrieval System**: Combines semantic search (ChromaDB + HuggingFace Embeddings) with keyword search (BM25) using Reciprocal Rank Fusion (RRF).
 - **LLM-Powered Auto-Correction**: Pre-processes raw user queries using a lightweight LLM inference pass to correct typos, grammar, and slang before retrieval, maximizing vector similarity match rates.
-- **Scalable Evaluation**: Built-in automated evaluation pipeline using **RAGAS** (LLM-as-a-judge) designed to run on Kaggle P100 GPUs to bypass local hardware limits.
 - **Dynamic Configuration**: Fully driven by `config/config.yaml` to easily swap chunking strategies, embedding models, and LLMs without changing code.
 - **Fail-safe Logging**: Comprehensive logging using `loguru` and incremental batch saving to prevent data loss during long evaluation runs.
 
@@ -41,10 +40,6 @@ graph TD
         K --> L[Ollama LLM<br>Qwen 2.5]
         H1 --> L
         L --> M[Final Answer]
-        
-        M --> N{RAGAS Evaluator<br>Qwen2.5:14B Judge}
-        N --> O[Faithfulness Score]
-        N --> P[Answer Relevancy Score]
     end
 ```
 
@@ -98,27 +93,15 @@ The application will be available at `http://localhost:8501`.
 
 ### Interactive Streamlit Demo
 The repository includes a robust interactive dashboard (`app.py`) designed to empirically test the RAG architecture.
-![Streamlit App Demo](results/figures/streamlit_demo.png)
 
-*(Note: Replace the image above with an actual screenshot of your Streamlit app before publishing to GitHub).*
-
----
-
-## Running RAGAS Evaluation on Kaggle
-
-Due to the heavy compute requirements of LLM-as-a-judge (RAGAS requires a 14B parameter model for accurate judging), the evaluation suite is optimized for Kaggle's P100 GPU (16GB VRAM).
-
-1. Zip this entire project repository.
-2. Upload the zip file as a **Dataset** on Kaggle.
-3. Open a new Kaggle Notebook, set Accelerator to **GPU P100**, and turn **Internet ON**.
-4. Upload `notebooks/02_kaggle_ragas_eval_FINAL.ipynb` to Kaggle.
-5. Click **Run All**. The notebook will:
-   - Automatically copy your dataset to the writable `/kaggle/working/` directory.
-   - Force-install Ollama and compatible LangChain library versions.
-   - Initialize the Hybrid RAG components.
-   - Run a batch evaluator that securely saves progress every 50 questions to `/kaggle/working/results/metrics/ragas_evaluation_results.csv`.
+*(Note: Insert your demo video here)*
+<div align="center">
+  <video src="PLACEHOLDER_VIDEO_URL" width="800" controls loop autoplay></video>
+</div>
 
 ---
+
+
 
 ## Evaluation Dataset Characteristics (N=1,000)
 
@@ -133,12 +116,7 @@ To ensure an objective and rigorous academic evaluation, our test suite comprise
 
 ---
 
-## Evaluation Metrics (RAGAS)
-We evaluate the pipeline on two primary axes:
-1. **Faithfulness**: Measures if the generated answer is strictly grounded in the retrieved context (hallucination check).
-2. **Answer Relevancy**: Measures how directly the generated answer addresses the user's query.
 
----
 
 ## Large-Scale Evaluation Results (1,000 Samples)
 
