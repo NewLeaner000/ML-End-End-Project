@@ -108,9 +108,8 @@ The application will be available at `http://localhost:8501`.
 ### Interactive Streamlit Demo
 The repository includes a robust interactive dashboard (`app.py`) designed to empirically test the RAG architecture.
 
-*(Note: Insert your demo video here)*
 <div align="center">
-  <video src="PLACEHOLDER_VIDEO_URL" width="800" controls loop autoplay></video>
+  <video src="https://github.com/user-attachments/assets/180322b6-56ff-467f-ba9f-374996c4c03a" width="800" controls loop autoplay></video>
 </div>
 
 ---
